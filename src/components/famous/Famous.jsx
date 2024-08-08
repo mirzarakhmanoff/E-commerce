@@ -25,30 +25,30 @@ const data = [
 
 const Famous = () => {
   return (
-    <div className="container mx-auto">
-      {" "}
+    <div className="container mx-auto px-4">
       <div className="famous__title flex items-center gap-4 mt-14 hover:text-yellow-500">
-        <h3 className="font-bold text-4xl text-black">Популярные категории</h3>
-        <span className="flex items-center cursor-pointer">
+        <h3 className="font-bold text-2xl md:text-4xl text-black">
+          Популярные категории
+        </h3>
+        <span className="flex items-center cursor-pointer text-sm md:text-base">
           Все категории <FaArrowRightLong />
         </span>
       </div>
-      <div className="famous flex gap-8 flex-wrap mt-9">
+      <div className="famous flex gap-6 flex-wrap mt-9 justify-center">
         {data.map((e, idx) => (
           <div
             key={idx}
-            className="famous__item flex items-center flex-col text-center w-56 border p-6 rounded-3xl bg-slate-50 hover:bg-gray-200 transition duration-300 ease-in-out transform hover:scale-105"
+            className="famous__item flex items-center flex-col text-center w-full sm:w-48 md:w-56 border p-4 sm:p-6 rounded-3xl bg-slate-50 hover:bg-gray-200 transition duration-300 ease-in-out transform hover:scale-105"
           >
-            <div className="famous__img flex items-center">
+            <div className="famous__img mb-4">
               <img
-                className="w-28 h-28 object-contain"
+                className="w-24 h-24 md:w-28 md:h-28 object-contain"
                 src={e.img}
                 alt={e.title}
-              />{" "}
-              {}
+              />
             </div>
             <div className="famous__desc">
-              <p>{e.title}</p>
+              <p className="text-sm md:text-base">{e.title}</p>
             </div>
           </div>
         ))}

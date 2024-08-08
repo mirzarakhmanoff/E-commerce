@@ -3,20 +3,16 @@ import logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between container m-auto p-6 font-family: Roboto  ">
-      <div className="logo">
+    <div className="container mx-auto p-6 flex flex-col md:flex-row items-center justify-between">
+      <div className="logo mb-4 md:mb-0">
         <a href="#">
-          {" "}
-          <img src={logo} alt="" />
+          <img src={logo} alt="Logo" className="w-32" />
         </a>
       </div>
-      <div className="nav__items">
-        <ul
-          className="flex gap-6 text-base font-normal  "
-          style={{ color: "#7D7D7D" }}
-        >
+      <div className="nav__items mb-4 md:mb-0">
+        <ul className="hidden md:flex flex-col md:flex-row gap-4 md:gap-6 text-base font-normal text-gray-600">
           <li>
-            <a href="#">Каталог </a>
+            <a href="#">Каталог</a>
           </li>
           <li>
             <a href="#">Доставка</a>
@@ -29,9 +25,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="numbers  flex flex-col justify-center">
-        <p>+ 375 736 463 64 72 / + 375 736 463 64 72</p>
-        <span className=" text-right  block">Заказать звонок</span>
+      <div className="numbers text-center md:text-right flex flex-col items-center md:items-end">
+        <p className="text-sm mb-2">+375 736 463 64 72 / +375 736 463 64 72</p>
+        <span className="text-blue-500 cursor-pointer">Заказать звонок</span>
       </div>
     </div>
   );
