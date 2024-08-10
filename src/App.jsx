@@ -6,6 +6,7 @@ import Famous from "./components/famous/Famous";
 import Sales from "./components/sales/Sales";
 import Products from "./components/products/Products";
 import Footer from "./components/footer/Footer";
+import BackToTopButton from "./components/back-to-top/BackToTop";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
       <Sales />
       <Products />
       <Footer />
+      <BackToTopButton />
     </>
   );
 }
