@@ -14,6 +14,7 @@ const Products = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(true);
+  const [length, setLength] = useState(0);
   const limit = 4;
 
   const [serach, setSearch] = useState("");
@@ -24,9 +25,13 @@ const Products = () => {
   useEffect(() => {
     axios
       .get(CATEGORIES_URL)
-      .then((res) => setCategories(res.data))
+
+      .then((res) => {
+        setCategories(res.data);
+        setLength(res.data.length);
+      })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setOffset]);
 
   useEffect(() => {
     setLoading(true);
@@ -48,7 +53,10 @@ const Products = () => {
 
   const categoryItems = categories?.map((category) => (
     <button
-      onClick={() => setSelectedCategory(`category/${category}`)}
+      onClick={() => {
+        setSelectedCategory(`category/${category}`);
+        setOffset(1);
+      }}
       key={category}
       type="button"
       className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
