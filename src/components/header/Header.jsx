@@ -46,6 +46,9 @@ const Header = () => {
           <li>
             <Link to={"/contacts"}>Контакты</Link>
           </li>
+          <li>
+            <Link to={"/a"}>Error</Link>
+          </li>
         </ul>
       </div>
       <div className="numbers text-center md:text-right flex flex-col items-center md:items-end">
