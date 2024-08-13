@@ -5,11 +5,11 @@ import insta from "../../assets/insta.svg";
 const Footer = () => {
   return (
     <footer className="container mx-auto px-4 py-8 md:py-14">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+      <div className="flex flex-col gap-12 md:flex-row justify-between items-start md:items-center">
         <div className="logo mb-8 md:mb-0">
           <img src={logo} alt="Logo" className="w-32 md:w-48" />
         </div>
-        <div className="footer__items flex flex-col md:flex-row justify-between w-full md:w-auto">
+        <div className="footer__items flex flex-col gap-12 md:flex-row justify-between w-full md:w-auto">
           <div className="footer__item mb-8 md:mb-0 w-full md:w-56 flex flex-col gap-3">
             <h5 className="font-bold text-lg">Информация</h5>
             <p className="text-sm">

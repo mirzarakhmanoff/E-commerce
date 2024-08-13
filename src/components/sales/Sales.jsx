@@ -28,38 +28,38 @@ const Sales = () => {
   const productItems = products.map((product) => (
     <div
       key={product.id}
-      className="relative w-full sm:w-72 border overflow-hidden transition-transform duration-300 ease-in-out transform hover:shadow-xl p-4 sm:p-7 rounded-3xl bg-white group"
+      className="relative w-full sm:w-64 border overflow-hidden transition-transform duration-300 ease-in-out transform hover:shadow-lg p-3 sm:p-5 rounded-2xl bg-white group"
     >
       <div className="relative overflow-hidden">
         <img
-          className="w-full h-48 sm:h-96 object-contain transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+          className="w-full h-36 sm:h-48 object-contain transition-transform duration-300 ease-in-out transform group-hover:scale-105"
           src={product.images[0]}
           alt={product.title}
         />
       </div>
-      <div className="p-2 sm:p-4">
-        <span className="flex items-center text-sm sm:text-base">
+      <div className="p-2 sm:p-3">
+        <span className="flex items-center text-xs sm:text-sm">
           12 <FaPercent />
         </span>
-        <h5 className="mt-2 mb-4 text-lg sm:text-xl font-bold leading-tight">
+        <h5 className="mt-2 mb-3 text-base sm:text-lg font-bold leading-tight">
           {product.title}
         </h5>
-        <p className="mb-2 text-sm sm:text-base">
-          {product.description.length > 100
-            ? product.description.slice(0, 80) + "..."
+        <p className="mb-2 text-xs sm:text-sm">
+          {product.description.length > 80
+            ? product.description.slice(0, 60) + "..."
             : product.description}
         </p>
-        <p className="line-through mb-2 text-red-500 text-sm sm:text-base">
+        <p className="line-through mb-2 text-red-500 text-xs sm:text-sm">
           {product.price} $
         </p>
-        <span className="text-green-500 font-bold text-lg sm:text-xl">
+        <span className="text-green-500 font-bold text-base sm:text-lg">
           {Math.round(product.price - product.price * 0.12)} ₽
         </span>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 bg-white transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0 z-10 flex justify-between items-center p-4">
+      <div className="absolute inset-x-0 bottom-0 bg-white transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0 z-10 flex justify-between items-center p-3">
         <select
-          className="p-2 border rounded-md text-sm sm:text-base"
+          className="p-1 border rounded-md text-xs sm:text-sm"
           name=""
           id=""
         >
@@ -67,7 +67,7 @@ const Sales = () => {
           <option value="">2</option>
           <option value="">3</option>
         </select>
-        <img className="cursor-pointer" src={buy} alt="Buy" />
+        <img className="w-8 h-8 cursor-pointer" src={buy} alt="Buy" />
       </div>
     </div>
   ));

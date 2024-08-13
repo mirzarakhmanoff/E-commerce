@@ -1,25 +1,20 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/header/Header";
-import Hero from "./components/hero/Hero";
-import Famous from "./components/famous/Famous";
-import Sales from "./components/sales/Sales";
-import Products from "./components/products/Products";
-import Footer from "./components/footer/Footer";
-import BackToTopButton from "./components/back-to-top/BackToTop";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Catalog from "./pages/catalog/Catalog";
+import Delivery from "./pages/delivery/Delivery";
+import Contacts from "./pages/contacts/Contacts";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <Header />
-      <Hero />
-      <Famous />
-      <Sales />
-      <Products />
-      <Footer />
-      <BackToTopButton />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/delivery" element={<Delivery />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Routes>
     </>
   );
 }
