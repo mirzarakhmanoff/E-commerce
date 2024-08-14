@@ -25,15 +25,15 @@ const Header = () => {
         </button>
       </div>
       <div
-        className={`md:flex flex-col md:flex-row gap-4 md:gap-6 text-base font-normal text-gray-600 ${
+        className={`md:flex md:flex-row gap-4 md:gap-6 text-base font-normal text-gray-600 ${
           open
             ? "fixed top-0 left-0 w-64 h-full bg-gray-100 border-r border-gray-300 p-4 z-30"
-            : "hidden md:flex"
+            : "hidden"
         }`}
       >
         <ul
           className={`flex flex-col md:flex-row gap-4 md:gap-6 ${
-            open ? "block" : "hidden"
+            open ? "block" : "hidden md:flex"
           }`}
         >
           <li>
@@ -47,6 +47,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contacts">Контакты</Link>
+          </li>
+          <li>
+            <Link to="*">Error</Link>
           </li>
         </ul>
       </div>
