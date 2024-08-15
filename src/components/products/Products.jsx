@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowRightLong, FaPercent } from "react-icons/fa6";
 import axios from "axios";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { FaPercent } from "react-icons/fa6";
 import buy from "../../assets/buy.svg";
 import ProductSkeleton from "../Skeleton/Skeleton";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://dummyjson.com/products";
 const CATEGORIES_URL = "https://dummyjson.com/products/category-list";
 
-const Products = () => {
+const Products = ({ onCategoryChange }) => {
   const [products, setProducts] = useState([]);
   const [offset, setOffset] = useState(1);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(true);
-  const [length, setLength] = useState(0);
   const limit = 4;
 
-  const [serach, setSearch] = useState("");
-  const filteredProducts = products.filter((product) => {
-    return product.title.toLowerCase().includes(serach.toLowerCase());
-  });
+  const [search, setSearch] = useState("");
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     axios
       .get(CATEGORIES_URL)
-
       .then((res) => {
         setCategories(res.data);
-        setLength(res.data.length);
       })
       .catch((err) => console.log(err));
-  }, [setOffset]);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -51,12 +50,18 @@ const Products = () => {
       });
   }, [offset, selectedCategory]);
 
-  const categoryItems = categories?.map((category) => (
+  const handleCategoryClick = (category) => {
+    const categorySlug = category.toLowerCase().replace(/\s+/g, "-");
+    setSelectedCategory(`category/${categorySlug}`);
+    setOffset(1);
+    if (onCategoryChange) {
+      onCategoryChange(`category/${categorySlug}`); // Передача selectedCategory через пропс
+    }
+  };
+
+  const categoryItems = categories.map((category) => (
     <button
-      onClick={() => {
-        setSelectedCategory(`category/${category}`);
-        setOffset(1);
-      }}
+      onClick={() => handleCategoryClick(category)}
       key={category}
       type="button"
       className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
@@ -64,17 +69,20 @@ const Products = () => {
       {category}
     </button>
   ));
+
   const productItems = filteredProducts.map((product) => (
     <div
       key={product.id}
       className="relative w-full sm:w-64 border overflow-hidden transition-transform duration-300 ease-in-out transform hover:shadow-xl p-4 sm:p-5 rounded-2xl bg-white group"
     >
       <div className="relative overflow-hidden">
-        <img
-          className="w-full h-60 object-contain transform transition duration-300 ease-in-out hover:scale-105"
-          src={product.images[0]}
-          alt={product.title}
-        />
+        <Link to={`/product/${product.id}`}>
+          <img
+            className="w-full h-60 object-contain transform transition duration-300 ease-in-out hover:scale-105"
+            src={product.images[0]}
+            alt={product.title}
+          />
+        </Link>
       </div>
       <div className="p-3">
         <h5 className="mt-2 mb-3 text-lg font-bold leading-tight">
@@ -84,7 +92,6 @@ const Products = () => {
         <span className="text-green-500 font-bold text-lg">
           {product.price} $
         </span>
-
         <div className="absolute inset-x-0 bottom-0 bg-white transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0 z-10 flex justify-between items-center p-3">
           <select
             className="p-1 border rounded-md text-xs sm:text-sm"
@@ -127,7 +134,7 @@ const Products = () => {
 
       <div className="w-full overflow-x-auto py-8 whitespace-nowrap">
         <button
-          onClick={() => setSelectedCategory("")}
+          onClick={() => handleCategoryClick("")}
           type="button"
           className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
         >

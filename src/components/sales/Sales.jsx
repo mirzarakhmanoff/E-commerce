@@ -3,6 +3,7 @@ import { FaArrowRightLong, FaPercent } from "react-icons/fa6";
 import axios from "axios";
 import buy from "../../assets/buy.svg";
 import ProductSkeleton from "../Skeleton/Skeleton";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://dummyjson.com/products";
 
@@ -31,11 +32,13 @@ const Sales = () => {
       className="relative w-full sm:w-64 border overflow-hidden transition-transform duration-300 ease-in-out transform hover:shadow-lg p-3 sm:p-5 rounded-2xl bg-white group"
     >
       <div className="relative overflow-hidden">
-        <img
-          className="w-full h-36 sm:h-48 object-contain transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-          src={product.images[0]}
-          alt={product.title}
-        />
+        <Link to={`product/${product.id}`}>
+          <img
+            className="w-full h-36 sm:h-48 object-contain transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            src={product.images[0]}
+            alt={product.title}
+          />
+        </Link>
       </div>
       <div className="p-2 sm:p-3">
         <span className="flex items-center text-xs sm:text-sm">
