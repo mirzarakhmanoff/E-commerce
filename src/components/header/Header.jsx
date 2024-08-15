@@ -69,6 +69,9 @@ const Header = () => {
           <li>
             <Link to="*">Error</Link>
           </li>
+          <li>
+            <Link to="/admin">Admin</Link>
+          </li>
         </ul>
       </div>
       <div className="numbers text-center md:text-right flex flex-col items-center md:items-end">
