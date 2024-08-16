@@ -55,7 +55,7 @@ const Products = ({ onCategoryChange }) => {
     setSelectedCategory(`category/${categorySlug}`);
     setOffset(1);
     if (onCategoryChange) {
-      onCategoryChange(`category/${categorySlug}`); // Передача selectedCategory через пропс
+      onCategoryChange(`category/${categorySlug}`);
     }
   };
 

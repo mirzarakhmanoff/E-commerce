@@ -1,4 +1,3 @@
-// src/components/Admin.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,10 +12,8 @@ const Admin = () => {
   const handleAdminCreation = (e) => {
     e.preventDefault();
 
-    // Здесь добавьте логику для отправки данных на сервер
     console.log("Admin:", { username, email, password, role });
 
-    // Навигация к панели администратора после успешного создания
     navigate("/admin/panel");
   };
 
