@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Header from "../header/Header";
 
 const API_URL = "https://dummyjson.com";
 
@@ -51,7 +52,8 @@ const Detail = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+      <Header />
+      <div className="mt-12 flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="md:w-1/2">
           <img
             src={data.images[0]}
