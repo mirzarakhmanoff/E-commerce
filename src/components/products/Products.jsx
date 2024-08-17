@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../api";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaPercent } from "react-icons/fa6";
 import buy from "../../assets/buy.svg";
@@ -25,7 +25,7 @@ const Products = ({ onCategoryChange }) => {
 
   useEffect(() => {
     axios
-      .get(CATEGORIES_URL)
+      .get(`/category-list`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -35,7 +35,7 @@ const Products = ({ onCategoryChange }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${API_URL}/${selectedCategory}`, {
+      .get(`/${selectedCategory}`, {
         params: {
           limit: limit * offset,
         },

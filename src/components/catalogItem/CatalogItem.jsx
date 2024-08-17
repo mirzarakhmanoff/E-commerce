@@ -7,6 +7,7 @@ import catalog5 from "../../assets/catalog5.png";
 import catalog6 from "../../assets/catalog6.png";
 import catalog7 from "../../assets/catalog7.png";
 import catalog8 from "../../assets/catalog8.png";
+import { useEffect } from "react";
 
 const data = [
   {

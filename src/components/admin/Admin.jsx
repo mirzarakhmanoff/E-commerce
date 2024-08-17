@@ -14,6 +14,7 @@ const Admin = () => {
 
     console.log("Admin:", { username, email, password, role });
 
+    // Навигация на /admin/panel после успешного создания
     navigate("/admin/panel");
   };
 

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRightLong, FaPercent } from "react-icons/fa6";
-import axios from "axios";
+import axios from "../../api";
 import buy from "../../assets/buy.svg";
 import ProductSkeleton from "../Skeleton/Skeleton";
 import { Link } from "react-router-dom";
-
-const API_URL = "https://dummyjson.com/products";
 
 const Sales = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +12,7 @@ const Sales = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(API_URL)
+      .get()
       .then((res) => {
         const limitedProducts = res.data.products.slice(4, 8);
         setProducts(limitedProducts);
