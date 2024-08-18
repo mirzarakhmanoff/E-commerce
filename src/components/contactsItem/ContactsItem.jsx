@@ -3,6 +3,7 @@ import icon from "../../assets/icon.svg";
 import icon1 from "../../assets/icon1.svg";
 import icon2 from "../../assets/icon2.svg";
 import contactsImg from "../../assets/contacts.png";
+import { memo } from "react";
 
 const ContactsItem = () => {
   return (
@@ -70,4 +71,4 @@ const ContactsItem = () => {
   );
 };
 
-export default ContactsItem;
+export default memo(ContactsItem);

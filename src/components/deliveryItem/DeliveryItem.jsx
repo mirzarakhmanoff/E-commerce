@@ -1,6 +1,7 @@
 import React from "react";
 import delivery1 from "../../assets/delivery.png";
 import delivery2 from "../../assets/delivery1.png";
+import { memo } from "react";
 
 const DeliveryItem = () => {
   return (
@@ -122,4 +123,4 @@ const DeliveryItem = () => {
   );
 };
 
-export default DeliveryItem;
+export default memo(DeliveryItem);

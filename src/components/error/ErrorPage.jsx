@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
@@ -13,4 +13,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default memo(ErrorPage);

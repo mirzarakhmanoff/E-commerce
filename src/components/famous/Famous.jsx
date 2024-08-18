@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import famous from "../../assets/famous.png";
 import famous1 from "../../assets/famous1.png";
@@ -57,4 +57,4 @@ const Famous = () => {
   );
 };
 
-export default Famous;
+export default memo(Famous);

@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import axios from "../../api";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaPercent } from "react-icons/fa6";
-import buy from "../../assets/buy.svg";
 import ProductSkeleton from "../Skeleton/Skeleton";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const API_URL = "https://dummyjson.com/products";
-const CATEGORIES_URL = "https://dummyjson.com/products/category-list";
+import ProductCard from "../product/ProductCard";
 
 const Products = ({ onCategoryChange }) => {
   const [products, setProducts] = useState([]);
   const [offset, setOffset] = useState(1);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [loading, setLoading] = useState(true);
   const limit = 4;
+  const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState("");
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
   );
-
   useEffect(() => {
     axios
       .get(`/category-list`)
@@ -70,44 +66,6 @@ const Products = ({ onCategoryChange }) => {
     </button>
   ));
 
-  const productItems = filteredProducts.map((product) => (
-    <div
-      key={product.id}
-      className="relative w-full sm:w-64 border overflow-hidden transition-transform duration-300 ease-in-out transform hover:shadow-xl p-4 sm:p-5 rounded-2xl bg-white group"
-    >
-      <div className="relative overflow-hidden">
-        <Link to={`/product/${product.id}`}>
-          <img
-            className="w-full h-60 object-contain transform transition duration-300 ease-in-out hover:scale-105"
-            src={product.images[0]}
-            alt={product.title}
-          />
-        </Link>
-      </div>
-      <div className="p-3">
-        <h5 className="mt-2 mb-3 text-lg font-bold leading-tight">
-          {product.title}
-        </h5>
-        <p className="mb-2 text-sm">{product.description.slice(0, 80)}</p>
-        <span className="text-green-500 font-bold text-lg">
-          {product.price} $
-        </span>
-        <div className="absolute inset-x-0 bottom-0 bg-white transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0 z-10 flex justify-between items-center p-3">
-          <select
-            className="p-1 border rounded-md text-xs sm:text-sm"
-            name=""
-            id=""
-          >
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-          </select>
-          <img className="w-6 h-6 cursor-pointer" src={buy} alt="Buy" />
-        </div>
-      </div>
-    </div>
-  ));
-
   return (
     <div className="container mx-auto">
       <div className="wrapper flex items-center justify-between">
@@ -142,13 +100,21 @@ const Products = ({ onCategoryChange }) => {
         </button>
         {categoryItems}
       </div>
-      <div className="flex gap-8 flex-wrap justify-center">
-        {loading
-          ? Array.from({ length: 4 }).map((_, index) => (
-              <ProductSkeleton key={index} />
-            ))
-          : productItems}
+
+      <div className="flex items-center justify-center">
+        {" "}
+        <ProductCard filteredProducts={filteredProducts} />
       </div>
+      <div className="flex items-center justify-center gap-6">
+        {loading ? (
+          Array.from({ length: 4 }).map((_, index) => (
+            <ProductSkeleton key={index} />
+          ))
+        ) : (
+          <div></div>
+        )}
+      </div>
+
       <div className="btn m-auto flex items-center justify-center mt-7">
         <button
           className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-4 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -161,4 +127,4 @@ const Products = ({ onCategoryChange }) => {
   );
 };
 
-export default Products;
+export default memo(Products);

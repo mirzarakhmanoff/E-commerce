@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { FaArrowRightLong, FaPercent } from "react-icons/fa6";
 import axios from "../../api";
 import buy from "../../assets/buy.svg";
@@ -95,4 +95,4 @@ const Sales = () => {
   );
 };
 
-export default Sales;
+export default memo(Sales);

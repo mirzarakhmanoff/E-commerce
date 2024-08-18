@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "../../components/admin/Admin";
+import SetAdmin from "../../components/admin/Admin";
 
 const AdminPage = () => {
   return (

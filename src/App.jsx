@@ -7,8 +7,8 @@ import Delivery from "./pages/delivery/Delivery";
 import Contacts from "./pages/contacts/Contacts";
 import Error from "./pages/error/Error";
 import Detail from "./components/Detail/Detail";
-import Admin from "./components/admin/Admin";
-import Panel from "./components/panel/Panel";
+import LoginPage from "./pages/loginPage/LoginPage";
+import AdminPage from "./pages/adminPage/AdminPage";
 
 function App(selectedCategory) {
   return (
@@ -23,8 +23,8 @@ function App(selectedCategory) {
           path="/product/:id"
           element={<Detail selectedCategory={selectedCategory} />}
         />
-        <Route path="/admin" element={<Admin />}>
-          <Route path="panel" element={<Panel />} />
+        <Route path="login" element={<LoginPage />}>
+          <Route path="admin" element={<AdminPage />} />
         </Route>
       </Routes>
     </>

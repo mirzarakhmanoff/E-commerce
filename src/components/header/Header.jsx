@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
@@ -70,7 +70,7 @@ const Header = () => {
             <Link to="*">Error</Link>
           </li>
           <li>
-            <Link to="/admin">Admin</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>
@@ -82,4 +82,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

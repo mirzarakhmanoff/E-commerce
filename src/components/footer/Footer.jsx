@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import logo from "../../assets/logo.png";
 import insta from "../../assets/insta.svg";
 
@@ -123,4 +123,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

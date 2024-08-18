@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import heroImg from "../../assets/hero.png";
 
 const Hero = () => {
@@ -42,4 +42,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default memo(Hero);
